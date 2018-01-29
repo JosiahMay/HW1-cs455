@@ -1,6 +1,5 @@
 package cs455.overlay.wireformats;
 
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
