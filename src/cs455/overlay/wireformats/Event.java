@@ -21,6 +21,11 @@ public class Event {
     this.messageType = messageType;
   }
 
+  public Event(byte[] marshalledBytes) throws IOException {
+    setupDataInputStream(marshalledBytes);
+    messageType = din.readInt();
+  }
+
   public byte[] getBytes() throws IOException{
     return new byte[0];
   }

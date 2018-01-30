@@ -14,7 +14,7 @@ public class RegistryReportsRegistrationStatusTest {
 
   @Before
   public void setup(){
-    rrs = new RegistryReportsRegistrationStatus(10, 3, "Success");
+    rrs = new RegistryReportsRegistrationStatus(idNum,  overlayString());
   }
 
   @Test
