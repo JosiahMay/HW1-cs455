@@ -2,6 +2,7 @@ package cs455.overlay.wireformats;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,10 +34,21 @@ public class OverlayNodeSendsDeregistrationTest {
   }
 
   @Test
-  public void toStringTest() throws Exception {
-    System.out.println(nsd.toString());
-    assertEquals(nsd.toString(), "Event type: 4\nID Number: " + idNumber +
-        "\nIP Address: " + ipAddress + "\nPort Number: " + portNumber);
+  public void nullConstructorTest(){
+    nsd = new OverlayNodeSendsDeregistration();
+    assertEquals(nsd.getPortNumber(), -1);
+  }
+
+  @Test
+  public void testBytes() throws IOException {
+    byte[] bytes = nsd.getBytes();
+    OverlayNodeSendsDeregistration byteBuild = new OverlayNodeSendsDeregistration(bytes);
+    assertEquals(byteBuild.toString(), buildString());
+  }
+
+  private String buildString(){
+    return "Event type: 4\nID Number: " + idNumber +
+        "\nIP Address: " + ipAddress + "\nPort Number: " + portNumber;
   }
 
 }

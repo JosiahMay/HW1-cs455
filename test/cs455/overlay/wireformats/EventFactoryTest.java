@@ -17,4 +17,10 @@ public class EventFactoryTest {
     Event event = EventFactory.getEvent(new OverlayNodeSendsRegistration().getBytes());
     assertEquals(event.getType(), Protocol.OVERLAY_NODE_SENDS_REGISTRATION);
   }
+
+  @Test
+  public void OverlayNodeSendsDeregistration()throws Exception{
+    Event event = EventFactory.getEvent(new OverlayNodeSendsDeregistration().getBytes());
+    assertEquals(event.getType(), Protocol.OVERLAY_NODE_SENDS_DEREGISTRATION);
+  }
 }
