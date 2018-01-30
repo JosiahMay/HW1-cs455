@@ -1,6 +1,8 @@
 
 
 import cs455.overlay.node.MessagingNodeTest;
+import cs455.overlay.wireformats.EventFactory;
+import cs455.overlay.wireformats.EventFactoryTest;
 import cs455.overlay.wireformats.EventTest;
 import cs455.overlay.wireformats.OverlayNodeSendsRegistrationTest;
 import cs455.overlay.wireformats.RegistryReportsRegistrationStatus;
@@ -14,7 +16,8 @@ import org.junit.runners.Suite;
   @Suite.SuiteClasses({
       EventTest.class,
       OverlayNodeSendsRegistrationTest.class,
-      RegistryReportsRegistrationStatusTest.class
+      RegistryReportsRegistrationStatusTest.class,
+      EventFactoryTest.class
 
   })
 
