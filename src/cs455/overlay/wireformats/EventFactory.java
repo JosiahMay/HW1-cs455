@@ -23,6 +23,9 @@ public class EventFactory {
       case Protocol.OVERLAY_NODE_SENDS_REGISTRATION:
         returnEvent = new OverlayNodeSendsRegistration(marshalledBytes);
         break;
+      case Protocol.REGISTRY_REPORTS_REGISTRATION_STATUS:
+        returnEvent = new RegistryReportsRegistrationStatus(marshalledBytes);
+        break;
       default:
         System.err.println("Invalid message type: " + messageType);
         break;

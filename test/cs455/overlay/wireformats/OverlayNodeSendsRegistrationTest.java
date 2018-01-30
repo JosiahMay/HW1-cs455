@@ -10,7 +10,7 @@ public class OverlayNodeSendsRegistrationTest {
   private OverlayNodeSendsRegistration nsr;
 
   @Before
-  public  void setup(){
+  public void setup(){
     nsr = new OverlayNodeSendsRegistration("199.199.199.1", 556);
   }
 
