@@ -73,4 +73,11 @@ public class Event {
     }
   }
 
+  protected String readByteString() throws IOException {
+    int stringLength = din.readInt();
+    byte[] stringInBytes = new byte[stringLength];
+    din.readFully(stringInBytes);
+    return new String(stringInBytes);
+  }
+
 }
