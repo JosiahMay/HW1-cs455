@@ -8,14 +8,7 @@ import java.io.IOException;
 public class EventFactory {
 
   public static Event getEvent(byte[] marshalledBytes) throws IOException {
-    ByteArrayInputStream baInputStream =
-        new ByteArrayInputStream(marshalledBytes);
-    DataInputStream din = new DataInputStream(new BufferedInputStream(baInputStream));
-
-    int messageType = din.readInt();
-
-    baInputStream.close();
-    din.close();
+    int messageType = getMessageTypeFromByteArray(marshalledBytes);
 
     Event returnEvent;
 
@@ -39,6 +32,18 @@ public class EventFactory {
         throw new IllegalArgumentException("Invalid message type: " + messageType);
     }
     return returnEvent;
+  }
+
+  private static int getMessageTypeFromByteArray(byte[] marshalledBytes) throws IOException {
+    ByteArrayInputStream baInputStream =
+        new ByteArrayInputStream(marshalledBytes);
+    DataInputStream din = new DataInputStream(new BufferedInputStream(baInputStream));
+
+    int messageType = din.readInt();
+
+    baInputStream.close();
+    din.close();
+    return messageType;
   }
 
 }
