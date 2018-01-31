@@ -10,6 +10,8 @@ import org.junit.Test;
 
 public class RegistrySendsNodeManifestTest {
 
+
+
   private RegistrySendsNodeManifest rsnm;
 
   @Before
@@ -20,7 +22,7 @@ public class RegistrySendsNodeManifestTest {
   }
 
   @Test
-  public void nullConstuctorTest() throws Exception {
+  public void nullConstructorTest() throws Exception {
     rsnm = new RegistrySendsNodeManifest();
     assertEquals(rsnm.getTablesInNetwork().length, 0);
   }
@@ -35,9 +37,21 @@ public class RegistrySendsNodeManifestTest {
   public void getTablesInNetwork() throws Exception {
     assertEquals(rsnm.getTablesInNetwork().length, RoutingTestSetups.numOfEntries);
   }
+  @Test
+  public void getBytes() throws Exception {
+    RoutingEntry[] entry = new RoutingEntry[1];
+    entry[0] = RoutingTestSetups.populateEntry();
+    rsnm = new RegistrySendsNodeManifest(new RoutingTable(entry), getIds(entry));
+    byte[] bytes = rsnm.getBytes();
+    RegistrySendsNodeManifest byteBuild = new RegistrySendsNodeManifest(bytes);
+    assertEquals(byteBuild.toString(), toStringTest());
 
-  public void getType() throws Exception {
-    assertEquals(rsnm.getType(), Protocol.REGISTRY_SENDS_NODE_MANIFEST);
+  }
+
+
+  private String toStringTest() throws Exception {
+    return "Routing Table:\nEntry 1\n" + RoutingTestSetups.entryString() + "\n\nNodes in network: ["
+        + RoutingTestSetups.idStart +"]";
   }
 
   private int[] getIds(RoutingEntry[] entries){

@@ -27,4 +27,11 @@ public class RoutingEntry {
   public String getIpAddress() {
     return ipAddress;
   }
+
+  @Override
+  public String toString() {
+    return "Node Id: " + nodeId
+        + "\nIP Address: " + ipAddress
+        + "\nPort Number: " + portNumber;
+  }
 }

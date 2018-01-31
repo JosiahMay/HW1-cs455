@@ -28,4 +28,16 @@ public class RoutingTableTest {
     assertEquals(entries[0].getNodeId(), RoutingTestSetups.idStart);
   }
 
+  @Test
+  public void toStringTest(){
+    RoutingEntry[] entry = new RoutingEntry[1];
+    entry[0] = RoutingTestSetups.populateEntry();
+    rt =new RoutingTable(entry);
+
+    assertEquals(rt.toString(), stringForTest());
+  }
+
+  private String stringForTest(){
+    return "\nEntry 1\n" + RoutingTestSetups.entryString();
+  }
 }

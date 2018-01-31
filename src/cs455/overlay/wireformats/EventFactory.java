@@ -32,6 +32,9 @@ public class EventFactory {
       case Protocol.REGISTRY_REPORTS_DEREGISTRATION_STATUS:
         returnEvent = new RegistryReportsDeregistrationStatus(marshalledBytes);
         break;
+      case Protocol.REGISTRY_SENDS_NODE_MANIFEST:
+        returnEvent = new RegistrySendsNodeManifest(marshalledBytes);
+        break;
       default:
         throw new IllegalArgumentException("Invalid message type: " + messageType);
     }

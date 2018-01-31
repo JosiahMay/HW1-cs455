@@ -85,4 +85,10 @@ public class Event {
     return new String(stringInBytes);
   }
 
+  protected void writeByteString(String message) throws IOException {
+    dout.writeInt(message.length()); // size of IP address
+    byte[] ipInBytes = message.getBytes();
+    dout.write(ipInBytes);
+  }
+
 }

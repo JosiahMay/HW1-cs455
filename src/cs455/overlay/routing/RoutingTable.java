@@ -15,4 +15,14 @@ public class RoutingTable {
   public RoutingEntry[] getEntries() {
     return entries;
   }
+
+  @Override
+  public String toString(){
+    StringBuilder rt = new StringBuilder();
+    int entryNum = 1;
+    for (RoutingEntry e:entries) {
+      rt.append("\nEntry ").append(entryNum).append("\n").append(e).append("");
+    }
+    return rt.toString();
+  }
 }

@@ -21,4 +21,10 @@ public interface RoutingTestSetups {
   static RoutingEntry populateEntry() {
     return new RoutingEntry(idStart,ipStart +1, portStart);
   }
+
+  static String entryString() {
+    return "Node Id: " + RoutingTestSetups.idStart
+        + "\nIP Address: " + RoutingTestSetups.ipStart+1
+        + "\nPort Number: " + RoutingTestSetups.portStart;
+  }
 }

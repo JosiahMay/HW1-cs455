@@ -34,4 +34,10 @@ public class RoutingEntryTest {
     re = new RoutingEntry();
     assertEquals(re.getNodeId(), -1);
   }
+
+  @Test
+  public void toStringTest() throws Exception {
+    assertEquals(re.toString(), RoutingTestSetups.entryString());
+  }
+
 }
