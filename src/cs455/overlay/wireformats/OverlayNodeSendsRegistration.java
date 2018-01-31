@@ -18,12 +18,7 @@ public class OverlayNodeSendsRegistration extends Event implements Protocol{
   }
 
   public OverlayNodeSendsRegistration(byte[] marshalledBytes) throws IOException {
-    super(OVERLAY_NODE_SENDS_REGISTRATION);
-    // Setup input streams
-    setupDataInputStream(marshalledBytes);
-
-    // Check if messageType matches
-    confirmMessageType(din.readInt());
+    super(marshalledBytes);
 
     // Read Ip address
     int ipAddressLength = din.readInt();

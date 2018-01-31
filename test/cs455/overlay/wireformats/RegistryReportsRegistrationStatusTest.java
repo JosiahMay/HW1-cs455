@@ -24,7 +24,7 @@ public class RegistryReportsRegistrationStatusTest {
 
   @Test
   public void getId() throws Exception {
-    assertEquals(rrs.getId(), 10);
+    assertEquals(rrs.getId(), idNum);
   }
 
   @Test

@@ -6,6 +6,7 @@ import cs455.overlay.wireformats.EventFactoryTest;
 import cs455.overlay.wireformats.EventTest;
 import cs455.overlay.wireformats.OverlayNodeSendsDeregistrationTest;
 import cs455.overlay.wireformats.OverlayNodeSendsRegistrationTest;
+import cs455.overlay.wireformats.RegistryReportsDeregistrationStatusTest;
 import cs455.overlay.wireformats.RegistryReportsRegistrationStatus;
 import cs455.overlay.wireformats.RegistryReportsRegistrationStatusTest;
 import junit.framework.JUnit4TestAdapter;
@@ -19,7 +20,8 @@ import org.junit.runners.Suite;
       OverlayNodeSendsRegistrationTest.class,
       RegistryReportsRegistrationStatusTest.class,
       EventFactoryTest.class,
-      OverlayNodeSendsDeregistrationTest.class
+      OverlayNodeSendsDeregistrationTest.class,
+      RegistryReportsDeregistrationStatusTest.class
 
   })
 
