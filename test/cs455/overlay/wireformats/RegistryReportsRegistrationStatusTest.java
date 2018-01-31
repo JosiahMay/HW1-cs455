@@ -6,10 +6,9 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-public class RegistryReportsRegistrationStatusTest {
+public class RegistryReportsRegistrationStatusTest extends MessageReportTestSetups{
 
   private RegistryReportsRegistrationStatus rrs;
-  private int idNum = 10;
   private int overlayNum = 3;
 
   @Before
@@ -36,7 +35,7 @@ public class RegistryReportsRegistrationStatusTest {
   @Test
   public void testNullMessage(){
     rrs =  new RegistryReportsRegistrationStatus();
-    assertEquals(rrs.getMessage(), "Constructed from null constructor");
+    assertEquals(rrs.getMessage(), nullMessage);
   }
 
   @Test

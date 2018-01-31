@@ -6,7 +6,7 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-public class RegistryReportsDeregistrationStatusTest {
+public class RegistryReportsDeregistrationStatusTest extends MessageReportTestSetups {
 
   private RegistryReportsDeregistrationStatus rrd;
   private int idNum = 189;
