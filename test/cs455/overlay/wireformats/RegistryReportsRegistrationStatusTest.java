@@ -14,7 +14,7 @@ public class RegistryReportsRegistrationStatusTest {
 
   @Before
   public void setup(){
-    rrs = new RegistryReportsRegistrationStatus(10, 3, "Success");
+    rrs = new RegistryReportsRegistrationStatus(idNum,  overlayString());
   }
 
   @Test
@@ -24,7 +24,7 @@ public class RegistryReportsRegistrationStatusTest {
 
   @Test
   public void getId() throws Exception {
-    assertEquals(rrs.getId(), 10);
+    assertEquals(rrs.getId(), idNum);
   }
 
   @Test

@@ -20,11 +20,7 @@ public class OverlayNodeSendsDeregistration extends Event implements Protocol{
   }
 
   public OverlayNodeSendsDeregistration(byte[] marshalledBytes) throws IOException {
-    super(OVERLAY_NODE_SENDS_DEREGISTRATION);
-    setupDataInputStream(marshalledBytes);
-
-    // Check if messageType matches
-    confirmMessageType(din.readInt());
+    super(marshalledBytes);
 
     //Get Attributes
     this.ipAddress = readByteString();

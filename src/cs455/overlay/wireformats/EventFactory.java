@@ -17,7 +17,7 @@ public class EventFactory {
     baInputStream.close();
     din.close();
 
-    Event returnEvent = null;
+    Event returnEvent;
 
     switch (messageType){
       case Protocol.OVERLAY_NODE_SENDS_REGISTRATION:
@@ -29,9 +29,11 @@ public class EventFactory {
       case Protocol.OVERLAY_NODE_SENDS_DEREGISTRATION:
         returnEvent = new OverlayNodeSendsDeregistration(marshalledBytes);
         break;
-      default:
-        System.err.println("Invalid message type: " + messageType);
+      case Protocol.REGISTRY_REPORTS_DEREGISTRATION_STATUS:
+        returnEvent = new RegistryReportsDeregistrationStatus(marshalledBytes);
         break;
+      default:
+        throw new IllegalArgumentException("Invalid message type: " + messageType);
     }
     return returnEvent;
   }
