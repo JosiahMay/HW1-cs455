@@ -8,28 +8,25 @@ import org.junit.Test;
 public class RoutingEntryTest {
 
   private RoutingEntry re;
-  private int idNum = 100;
-  private int port = 8453;
-  private String ipAddress = "192.01.01.04";
 
   @Before
   public void setup() throws Exception {
-    re = new RoutingEntry(idNum, ipAddress, port);
+    re = RoutingTestSetups.populateEntry();
   }
 
   @Test
   public void getNodeId() throws Exception {
-    assertEquals(re.getNodeId(), idNum);
+    assertEquals(re.getNodeId(), RoutingTestSetups.idStart);
   }
 
   @Test
   public void getPortNumber() throws Exception {
-    assertEquals(re.getPortNumber(), port);
+    assertEquals(re.getPortNumber(), RoutingTestSetups.portStart);
   }
 
   @Test
   public void getIpAddress() throws Exception {
-    assertEquals(re.getIpAddress(), ipAddress);
+    assertEquals(re.getIpAddress(), RoutingTestSetups.ipStart+1);
   }
 
   @Test

@@ -13,6 +13,7 @@ import cs455.overlay.wireformats.OverlayNodeSendsRegistrationTest;
 import cs455.overlay.wireformats.RegistryReportsDeregistrationStatusTest;
 import cs455.overlay.wireformats.RegistryReportsRegistrationStatus;
 import cs455.overlay.wireformats.RegistryReportsRegistrationStatusTest;
+import cs455.overlay.wireformats.RegistrySendsNodeManifestTest;
 import junit.framework.JUnit4TestAdapter;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -27,7 +28,8 @@ import org.junit.runners.Suite;
       OverlayNodeSendsDeregistrationTest.class,
       RegistryReportsDeregistrationStatusTest.class,
       RoutingEntryTest.class,
-      RoutingTableTest.class
+      RoutingTableTest.class,
+      RegistrySendsNodeManifestTest.class
 
   })
 
