@@ -1,6 +1,10 @@
 
 
 import cs455.overlay.node.MessagingNodeTest;
+import cs455.overlay.routing.RoutingEntry;
+import cs455.overlay.routing.RoutingEntryTest;
+import cs455.overlay.routing.RoutingTable;
+import cs455.overlay.routing.RoutingTableTest;
 import cs455.overlay.wireformats.EventFactory;
 import cs455.overlay.wireformats.EventFactoryTest;
 import cs455.overlay.wireformats.EventTest;
@@ -9,6 +13,7 @@ import cs455.overlay.wireformats.OverlayNodeSendsRegistrationTest;
 import cs455.overlay.wireformats.RegistryReportsDeregistrationStatusTest;
 import cs455.overlay.wireformats.RegistryReportsRegistrationStatus;
 import cs455.overlay.wireformats.RegistryReportsRegistrationStatusTest;
+import cs455.overlay.wireformats.RegistrySendsNodeManifestTest;
 import junit.framework.JUnit4TestAdapter;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -21,7 +26,10 @@ import org.junit.runners.Suite;
       RegistryReportsRegistrationStatusTest.class,
       EventFactoryTest.class,
       OverlayNodeSendsDeregistrationTest.class,
-      RegistryReportsDeregistrationStatusTest.class
+      RegistryReportsDeregistrationStatusTest.class,
+      RoutingEntryTest.class,
+      RoutingTableTest.class,
+      RegistrySendsNodeManifestTest.class
 
   })
 

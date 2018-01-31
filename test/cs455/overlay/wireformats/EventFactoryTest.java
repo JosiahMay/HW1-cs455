@@ -42,5 +42,9 @@ public class EventFactoryTest {
     assertEquals(event.getType(), Protocol.REGISTRY_REPORTS_DEREGISTRATION_STATUS);
   }
 
-
+  @Test
+  public void RegistrySendsNodeManifest() throws Exception {
+    Event event = EventFactory.getEvent(new RegistrySendsNodeManifest().getBytes());
+    assertEquals(event.getType(), Protocol.REGISTRY_SENDS_NODE_MANIFEST);
+  }
 }

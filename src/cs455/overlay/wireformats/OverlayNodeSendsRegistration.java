@@ -40,9 +40,7 @@ public class OverlayNodeSendsRegistration extends Event implements Protocol{
 
     dout.writeInt(messageType);
     // Write the IP address
-    dout.writeInt(ipAddress.length()); // size of IP address
-    byte[] ipInBytes = ipAddress.getBytes();
-    dout.write(ipInBytes);
+    writeByteString(ipAddress);
     // Write port
     dout.writeInt(port);
     // Save data to byte array
