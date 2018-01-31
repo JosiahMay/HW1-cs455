@@ -27,7 +27,6 @@ public abstract class MessageReportStatus extends Event implements Protocol{
 
   @Override
   public byte[] getBytes() throws IOException{
-    byte[] marshalledBytes;
     setupDataOutputStream();
 
     //MessageType and Id
@@ -37,15 +36,9 @@ public abstract class MessageReportStatus extends Event implements Protocol{
     dout.writeInt(message.length());
     dout.write(message.getBytes());
 
-    // Save data to byte array
-    dout.flush();
-    marshalledBytes = baOutputStream.toByteArray();
-
-    // Close connections
-    teardownDataOutputStream();
-
-    return marshalledBytes;
+    return getOutputByteArray();
   }
+
 
   public String getMessage() {
     return message;
