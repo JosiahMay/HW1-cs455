@@ -2,6 +2,9 @@
 
 import cs455.overlay.node.MessagingNodeTest;
 import cs455.overlay.routing.RoutingEntry;
+import cs455.overlay.routing.RoutingEntryTest;
+import cs455.overlay.routing.RoutingTable;
+import cs455.overlay.routing.RoutingTableTest;
 import cs455.overlay.wireformats.EventFactory;
 import cs455.overlay.wireformats.EventFactoryTest;
 import cs455.overlay.wireformats.EventTest;
@@ -23,7 +26,8 @@ import org.junit.runners.Suite;
       EventFactoryTest.class,
       OverlayNodeSendsDeregistrationTest.class,
       RegistryReportsDeregistrationStatusTest.class,
-      RoutingEntry.class
+      RoutingEntryTest.class,
+      RoutingTableTest.class
 
   })
 
