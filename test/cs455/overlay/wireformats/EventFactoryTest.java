@@ -47,4 +47,10 @@ public class EventFactoryTest {
     Event event = EventFactory.getEvent(new RegistrySendsNodeManifest().getBytes());
     assertEquals(event.getType(), Protocol.REGISTRY_SENDS_NODE_MANIFEST);
   }
+
+  @Test
+  public void NodeReportsOverlaySetupStatus() throws Exception {
+    Event event = EventFactory.getEvent(new NodeReportsOverlaySetupStatus().getBytes());
+    assertEquals(event.getType(), Protocol.NODE_REPORTS_OVERLAY_SETUP_STATUS);
+  }
 }

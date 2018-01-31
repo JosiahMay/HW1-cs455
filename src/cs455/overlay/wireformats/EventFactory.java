@@ -7,6 +7,7 @@ import java.io.IOException;
 
 public class EventFactory {
 
+
   public static Event getEvent(byte[] marshalledBytes) throws IOException {
     int messageType = getMessageTypeFromByteArray(marshalledBytes);
 
@@ -27,6 +28,9 @@ public class EventFactory {
         break;
       case Protocol.REGISTRY_SENDS_NODE_MANIFEST:
         returnEvent = new RegistrySendsNodeManifest(marshalledBytes);
+        break;
+      case Protocol.NODE_REPORTS_OVERLAY_SETUP_STATUS:
+        returnEvent = new NodeReportsOverlaySetupStatus(marshalledBytes);
         break;
       default:
         throw new IllegalArgumentException("Invalid message type: " + messageType);
