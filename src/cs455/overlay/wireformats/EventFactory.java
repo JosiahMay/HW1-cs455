@@ -11,34 +11,24 @@ public class EventFactory {
   public static Event getEvent(byte[] marshalledBytes) throws IOException {
     int messageType = getMessageTypeFromByteArray(marshalledBytes);
 
-    Event returnEvent;
-
     switch (messageType){
       case Protocol.OVERLAY_NODE_SENDS_REGISTRATION:
-        returnEvent = new OverlayNodeSendsRegistration(marshalledBytes);
-        break;
+        return new OverlayNodeSendsRegistration(marshalledBytes);
       case Protocol.REGISTRY_REPORTS_REGISTRATION_STATUS:
-        returnEvent = new RegistryReportsRegistrationStatus(marshalledBytes);
-        break;
+        return new RegistryReportsRegistrationStatus(marshalledBytes);
       case Protocol.OVERLAY_NODE_SENDS_DEREGISTRATION:
-        returnEvent = new OverlayNodeSendsDeregistration(marshalledBytes);
-        break;
+        return new OverlayNodeSendsDeregistration(marshalledBytes);
       case Protocol.REGISTRY_REPORTS_DEREGISTRATION_STATUS:
-        returnEvent = new RegistryReportsDeregistrationStatus(marshalledBytes);
-        break;
+        return new RegistryReportsDeregistrationStatus(marshalledBytes);
       case Protocol.REGISTRY_SENDS_NODE_MANIFEST:
-        returnEvent = new RegistrySendsNodeManifest(marshalledBytes);
-        break;
+        return new RegistrySendsNodeManifest(marshalledBytes);
       case Protocol.NODE_REPORTS_OVERLAY_SETUP_STATUS:
-        returnEvent = new NodeReportsOverlaySetupStatus(marshalledBytes);
-        break;
+        return new NodeReportsOverlaySetupStatus(marshalledBytes);
       case Protocol.REGISTRY_REQUESTS_TASK_INITIATE:
-        returnEvent = new RegistryRequestsTaskInitiate(marshalledBytes);
-        break;
+        return new RegistryRequestsTaskInitiate(marshalledBytes);
       default:
         throw new IllegalArgumentException("Invalid message type: " + messageType);
     }
-    return returnEvent;
   }
 
   private static int getMessageTypeFromByteArray(byte[] marshalledBytes) throws IOException {
