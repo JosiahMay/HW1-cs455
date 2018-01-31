@@ -32,6 +32,9 @@ public class EventFactory {
       case Protocol.NODE_REPORTS_OVERLAY_SETUP_STATUS:
         returnEvent = new NodeReportsOverlaySetupStatus(marshalledBytes);
         break;
+      case Protocol.REGISTRY_REQUESTS_TASK_INITIATE:
+        returnEvent = new RegistryRequestsTaskInitiate(marshalledBytes);
+        break;
       default:
         throw new IllegalArgumentException("Invalid message type: " + messageType);
     }

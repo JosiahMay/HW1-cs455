@@ -26,6 +26,7 @@ public class Event {
     messageType = din.readInt();
   }
 
+
   public byte[] getBytes() throws IOException{
     return new byte[0];
   }
@@ -91,4 +92,13 @@ public class Event {
     dout.write(ipInBytes);
   }
 
+  protected byte[] getOutputByteArray() throws IOException {
+    byte[] marshalledBytes;// Save data to byte array
+    dout.flush();
+    marshalledBytes = baOutputStream.toByteArray();
+
+    // Close connections
+    teardownDataOutputStream();
+    return marshalledBytes;
+  }
 }
