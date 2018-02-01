@@ -32,6 +32,8 @@ public class EventFactory {
         return new OverlayNodeReportsTrafficSummary(marshalledBytes);
       case Protocol.OVERLAY_NODE_REPORTS_TASK_FINISHED:
         return new OverlayNodeReportsTaskFinished(marshalledBytes);
+      case Protocol.REGISTRY_REQUESTS_TRAFFIC_SUMMARY:
+        return new RegistryRequestsTrafficSummary(marshalledBytes);
       default:
         throw new IllegalArgumentException("Invalid message type: " + messageType);
     }
