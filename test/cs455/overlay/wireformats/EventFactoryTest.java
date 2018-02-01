@@ -71,4 +71,10 @@ public class EventFactoryTest {
     Event event = EventFactory.getEvent(new OverlayNodeReportsTrafficSummary().getBytes());
     assertEquals(event.getType(), Protocol.OVERLAY_NODE_REPORTS_TRAFFIC_SUMMARY);
   }
+
+  @Test
+  public void OverlayNodeReportsTaskFinished() throws Exception {
+    Event event = EventFactory.getEvent(new OverlayNodeReportsTaskFinished().getBytes());
+    assertEquals(event.getType(), Protocol.OVERLAY_NODE_REPORTS_TASK_FINISHED);
+  }
 }

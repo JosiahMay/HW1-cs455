@@ -17,4 +17,7 @@ public interface TestVariables {
   long[] sumOfPackets = {sumOfPacketSent, sumOfPacketsReceived};
 
   int idNum = 10;
+  String ipAddress = "192.0.0.1";
+  int portNumber = 159;
+
 }
