@@ -6,37 +6,33 @@ import java.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;
 
-public class PacketTest {
+public class PacketTest implements TestVariables{
 
   private Packet p;
-  private final int destination = 100;
-  private final int source = 5;
-  private final int payload = 123513;
-  private final int[] traceRoute = {5,12,48};
 
   @Before
   public void setUp() throws Exception {
-    p = new Packet(destination, source, payload, traceRoute);
+    p = new Packet(packetDestination, packetSource, packetPayload, packetTraceRoute);
   }
 
   @Test
   public void getDestination() throws Exception {
-    assertEquals(p.getDestination(), destination);
+    assertEquals(p.getDestination(), packetDestination);
   }
 
   @Test
   public void getSource() throws Exception {
-    assertEquals(p.getSource(), source);
+    assertEquals(p.getSource(), packetSource);
   }
 
   @Test
   public void getPayload() throws Exception {
-    assertEquals(p.getPayload(), payload);
+    assertEquals(p.getPayload(), packetPayload);
   }
 
   @Test
   public void getTraceRoute() throws Exception {
-    assertEquals(p.getTraceRoute(), traceRoute);
+    assertEquals(p.getTraceRoute(), packetTraceRoute);
   }
 
   @Test
@@ -45,10 +41,10 @@ public class PacketTest {
   }
 
   private String messageString() {
-    return "Destination: " + destination
-        + "\nSource: " + source
-        + "\nPayload: " + payload
-        + "\nTraceRoute: " + Arrays.toString(traceRoute);
+    return "Destination: " + packetDestination
+        + "\nSource: " + packetSource
+        + "\nPayload: " + packetPayload
+        + "\nTraceRoute: " + Arrays.toString(packetTraceRoute);
   }
 
 }
