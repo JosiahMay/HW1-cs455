@@ -59,4 +59,9 @@ public class EventFactoryTest {
     Event event = EventFactory.getEvent(new RegistryRequestsTaskInitiate().getBytes());
     assertEquals(event.getType(), Protocol.REGISTRY_REQUESTS_TASK_INITIATE);
   }
+
+  @Test public void OverlayNodeSendsData() throws Exception {
+    Event event = EventFactory.getEvent(new OverlayNodeSendsData().getBytes());
+    assertEquals(event.getType(), Protocol.OVERLAY_NODE_SENDS_DATA);
+  }
 }

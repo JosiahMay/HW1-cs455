@@ -9,8 +9,11 @@ import cs455.overlay.wireformats.EventFactory;
 import cs455.overlay.wireformats.EventFactoryTest;
 import cs455.overlay.wireformats.EventTest;
 import cs455.overlay.wireformats.NodeReportsOverlaySetupStatusTest;
+import cs455.overlay.wireformats.OverlayNodeSendsDataTest;
 import cs455.overlay.wireformats.OverlayNodeSendsDeregistrationTest;
 import cs455.overlay.wireformats.OverlayNodeSendsRegistrationTest;
+import cs455.overlay.wireformats.Packet;
+import cs455.overlay.wireformats.PacketTest;
 import cs455.overlay.wireformats.RegistryReportsDeregistrationStatusTest;
 import cs455.overlay.wireformats.RegistryReportsRegistrationStatus;
 import cs455.overlay.wireformats.RegistryReportsRegistrationStatusTest;
@@ -33,7 +36,9 @@ import org.junit.runners.Suite;
       RoutingTableTest.class,
       RegistrySendsNodeManifestTest.class,
       NodeReportsOverlaySetupStatusTest.class,
-      RegistryRequestsTaskInitiateTest.class
+      RegistryRequestsTaskInitiateTest.class,
+      PacketTest.class,
+      OverlayNodeSendsDataTest.class
 
   })
 

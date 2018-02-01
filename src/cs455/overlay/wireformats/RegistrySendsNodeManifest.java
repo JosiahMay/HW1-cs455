@@ -26,19 +26,11 @@ public class RegistrySendsNodeManifest extends Event implements Protocol {
     //Setup RoutingTable
     routingTable = makeRoutingTable();
     // Find all nodes in network
-    tablesInNetwork = findNodesInNetwork();
+    tablesInNetwork = readIntArray();
 
     teardownDataInputStream();
   }
 
-  private int[] findNodesInNetwork() throws IOException {
-    int numberOfIds = din.readInt();
-    int[] rt = new int[numberOfIds];
-    for (int i = 0; i < numberOfIds; i++) {
-      rt[i] = din.readInt();
-    }
-    return rt;
-  }
 
   private RoutingTable makeRoutingTable() throws IOException {
     int numOfEntries = din.readInt();
