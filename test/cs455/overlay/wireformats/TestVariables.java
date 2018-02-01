@@ -15,4 +15,6 @@ public interface TestVariables {
 
   int[] packetInfo = {packetSent, packetsRelayed, packetsReceived};
   long[] sumOfPackets = {sumOfPacketSent, sumOfPacketsReceived};
+
+  int idNum = 10;
 }

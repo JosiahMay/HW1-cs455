@@ -39,4 +39,9 @@ public class TrafficReportTest implements TestVariables{
     assertEquals(tr.getSumOfPacketsReceived(), sumOfPacketsReceived);
   }
 
+  @Test
+  public void nullConstructor(){
+    tr = new TrafficReport();
+    assertEquals(tr.getPacketSent(), 0);
+  }
 }

@@ -8,6 +8,10 @@ public class TrafficReport {
   private final int packetsReceived;
   private final long sumOfPacketsReceived;
 
+  public TrafficReport(){
+    this(new int[3], new long[2]);
+  }
+
   public TrafficReport(int[] packetInfo, long[] sumOfPackets){
     checkPacketInfo(packetInfo);
     packetSent = packetInfo[0];
