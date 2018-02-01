@@ -101,4 +101,13 @@ public class Event {
     teardownDataOutputStream();
     return marshalledBytes;
   }
+
+  protected int[] readIntArray() throws IOException {
+    int arraySize = din.readInt();
+    int[] array = new int[arraySize];
+    for (int i = 0; i < arraySize; i++) {
+      array[i] = din.readInt();
+    }
+    return array;
+  }
 }

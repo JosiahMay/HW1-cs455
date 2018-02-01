@@ -59,19 +59,11 @@ public class OverlayNodeSendsData extends Event implements Protocol{
     int destination = din.readInt();
     int source = din.readInt();
     int payload = din.readInt();
-    int[] traceRoute = readTraceRoute();
+    int[] traceRoute = readIntArray();
 
     return new Packet(destination, source, payload, traceRoute);
   }
 
-  private int[] readTraceRoute() throws IOException {
-    int routeSize = din.readInt();
-    int[] route = new int[routeSize];
-    for (int i = 0; i < routeSize; i++) {
-      route[i] = din.readInt();
-    }
-    return route;
-  }
 
   @Override
   public String toString(){
