@@ -13,4 +13,5 @@ public interface Protocol {
   byte REGISTRY_REQUESTS_TRAFFIC_SUMMARY = 11;
   byte OVERLAY_NODE_REPORTS_TRAFFIC_SUMMARY = 12;
 
+
 }

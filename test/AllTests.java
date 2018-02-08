@@ -5,6 +5,8 @@ import cs455.overlay.routing.RoutingEntry;
 import cs455.overlay.routing.RoutingEntryTest;
 import cs455.overlay.routing.RoutingTable;
 import cs455.overlay.routing.RoutingTableTest;
+import cs455.overlay.util.InputCommands;
+import cs455.overlay.util.InputCommandsTest;
 import cs455.overlay.wireformats.EventFactory;
 import cs455.overlay.wireformats.EventFactoryTest;
 import cs455.overlay.wireformats.EventTest;
@@ -46,7 +48,8 @@ import org.junit.runners.Suite;
       TrafficReportTest.class,
       OverlayNodeReportsTrafficSummaryTest.class,
       OverlayNodeReportsTaskFinishedTest.class,
-      RegistryRequestsTrafficSummaryTest.class
+      RegistryRequestsTrafficSummaryTest.class,
+      InputCommandsTest.class
 
   })
 
