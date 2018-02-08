@@ -35,20 +35,19 @@ public class InteractiveCommandParser extends Thread implements CommandProtocols
     BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
     String fromUser;
 
-    try {
+
       while (!Thread.currentThread().isInterrupted()) {
+        try {
           if ((fromUser = stdIn.readLine()) != null){
             String[] userCommand = fromUser.split("\\s");
             sendCommand(userCommand);
             System.out.println(fromUser);
           }
-      }
-
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (IllegalArgumentException e){
-      System.out.println(e.getMessage());
+        }catch (IOException e) {
+          e.printStackTrace();
+        } catch (IllegalArgumentException e){
+          System.out.println(e.getMessage());
+        }
     }
     System.out.println("Stopping thread Parser");
 
@@ -92,7 +91,7 @@ public class InteractiveCommandParser extends Thread implements CommandProtocols
   private InputCommands parseCommands(String[] userCommand) {
 
     checkForValidCommandSize(userCommand.length, 1);
-    if(userCommand[0].equals("help")){
+    if(userCommand[0].equals(HELP)){
         return new InputCommands(commandTypes.HELP);
     }
 
