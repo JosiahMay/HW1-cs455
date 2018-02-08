@@ -85,12 +85,44 @@ public class Registry implements Node{
   @Override
   public void onEvent(Event event) {
 
+
+
   }
 
   @Override
   public void onCommand(InputCommands command) {
+
+    switch (command.command){
+      case SETUP_OVERLAY:
+        setupOverlay(command.numberOfItems);
+        break;
+      case START_MESSAGING:
+        startMessaging(command.numberOfItems);
+        break;
+      case LIST_MESSAGING_NODES:
+        listMessagingNodes();
+        break;
+      case LIST_ROUTING_TABLES:
+        listRoutingTables();
+        break;
+      default:
+        System.err.println("Unknown command type given");
+    }
     running = false;
     System.out.println("Received command from parser");
     input.interrupt();
+  }
+
+  private void listRoutingTables() {
+  }
+
+  private void listMessagingNodes() {
+  }
+
+  private void startMessaging(int numberOfItems) {
+  }
+
+  private void setupOverlay(int numberOfItems) {
+
   }
 }
