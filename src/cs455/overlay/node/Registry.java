@@ -1,15 +1,29 @@
 package cs455.overlay.node;
 
+import cs455.overlay.util.InputCommands;
+import cs455.overlay.util.InteractiveCommandParser;
 import cs455.overlay.wireformats.Event;
-import cs455.overlay.wireformats.EventFactory;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.SocketException;
 
 public class Registry implements Node{
+
+  static final String name = "Registry";
+
+  private volatile boolean running = true;
+  private Thread input;
+
+  private void startCommandProcessor(){
+    System.out.println("Starting parser");
+    input = new Thread(new InteractiveCommandParser(this));
+    input.start();
+
+
+    while(running){
+      //System.out.println("Waiting to be stopped");
+    }
+    System.out.println("Stopping parser");
+    System.out.println( input.isInterrupted());
+  }
+
 
   public static void main(String[] args) {
 
@@ -18,7 +32,11 @@ public class Registry implements Node{
       System.err.println("java cs455.overlay.node.Registry  <port number>");
       System.exit(1);
     }
-    ServerSocket serverSocket;
+    Registry r = new Registry();
+
+    r.startCommandProcessor();
+
+    /*ServerSocket serverSocket;
     int portNumber = Integer.parseInt(args[0]);
     try {
       System.out.println(portNumber);
@@ -58,9 +76,53 @@ public class Registry implements Node{
       System.out.println("Closed server socket on " + serverSocket.getLocalPort());
     } catch (IOException e) {
       e.printStackTrace();
+    }*/
+
+
+
+  }
+
+  @Override
+  public void onEvent(Event event) {
+
+
+
+  }
+
+  @Override
+  public void onCommand(InputCommands command) {
+
+    switch (command.command){
+      case SETUP_OVERLAY:
+        setupOverlay(command.numberOfItems);
+        break;
+      case START_MESSAGING:
+        startMessaging(command.numberOfItems);
+        break;
+      case LIST_MESSAGING_NODES:
+        listMessagingNodes();
+        break;
+      case LIST_ROUTING_TABLES:
+        listRoutingTables();
+        break;
+      default:
+        System.err.println("Unknown command type given");
     }
+    running = false;
+    System.out.println("Received command from parser");
+    input.interrupt();
+  }
 
+  private void listRoutingTables() {
+  }
 
+  private void listMessagingNodes() {
+  }
+
+  private void startMessaging(int numberOfItems) {
+  }
+
+  private void setupOverlay(int numberOfItems) {
 
   }
 }
