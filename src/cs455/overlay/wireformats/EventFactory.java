@@ -1,11 +1,15 @@
 package cs455.overlay.wireformats;
 
+import cs455.overlay.node.Node;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.net.Socket;
 
 public class EventFactory {
+
+  private static Node commandNode;
 
 
   public static Event getEvent(byte[] marshalledBytes) throws IOException {
@@ -51,4 +55,15 @@ public class EventFactory {
     return messageType;
   }
 
+  public static void setCommandNode(Node node){
+    commandNode = node;
+  }
+
+  public static void sentToNode(Event event){
+    commandNode.onEvent(event);
+  }
+
+  public static void sentToNode(Event event, Socket socket) {
+    commandNode.onEvent(event, socket);
+  }
 }

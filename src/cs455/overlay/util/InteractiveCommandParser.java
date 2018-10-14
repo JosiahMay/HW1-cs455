@@ -35,25 +35,23 @@ public class InteractiveCommandParser extends Thread implements CommandProtocols
     BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
     String fromUser;
 
-
-      while (!Thread.currentThread().isInterrupted()) {
-        try {
-          if ((fromUser = stdIn.readLine()) != null){
-            String[] userCommand = fromUser.split("\\s");
-            sendCommand(userCommand);
-            System.out.println(fromUser);
-          }
-        }catch (IOException e) {
-          e.printStackTrace();
-        } catch (IllegalArgumentException e){
-          System.out.println(e.getMessage());
+    while (!Thread.currentThread().isInterrupted()) {
+      try {
+        if ((fromUser = stdIn.readLine()) != null){
+          String[] userCommand = fromUser.split("\\s");
+          sendCommand(userCommand);
         }
+      } catch (IOException e) {
+        e.printStackTrace();
+        System.out.println();
+      } catch (IllegalArgumentException e){
+        System.out.println(e.getMessage());
+      }
     }
-    System.out.println("Stopping thread Parser");
 
-    }
+  }
 
-  private void sendCommand(String[] userCommand) {
+  private void sendCommand(String[] userCommand) throws IOException {
     InputCommands command = parseCommands(userCommand);
     if(command.command.equals(commandTypes.HELP)){
       printValidCommands();
@@ -90,7 +88,6 @@ public class InteractiveCommandParser extends Thread implements CommandProtocols
 
   private InputCommands parseCommands(String[] userCommand) {
 
-    checkForValidCommandSize(userCommand.length, 1);
     if(userCommand[0].equals(HELP)){
         return new InputCommands(commandTypes.HELP);
     }
@@ -110,7 +107,7 @@ public class InteractiveCommandParser extends Thread implements CommandProtocols
       case EXIT_OVERLAY:
         return new InputCommands(commandTypes.EXIT_OVERLAY);
       default:
-        throwInvaildCommand();
+        throwInvalidCommand();
         return null;
     }
   }
@@ -128,7 +125,7 @@ public class InteractiveCommandParser extends Thread implements CommandProtocols
       case LIST_ROUTING_TABLES:
         return new InputCommands(commandTypes.LIST_ROUTING_TABLES);
       default:
-        throwInvaildCommand();
+        throwInvalidCommand();
         return null;
 
 
@@ -141,23 +138,23 @@ public class InteractiveCommandParser extends Thread implements CommandProtocols
     try {
       int number = Integer.parseInt(userCommand);
       if(number < 1){
-        throwInvaildCommand();
+        throwInvalidCommand();
       }
       return number;
     } catch (NumberFormatException e){
-      throwInvaildCommand();
+      throwInvalidCommand();
     }
     return -1;
   }
 
   private void checkForValidCommandSize(int length, int expectedSize) {
     if(length != expectedSize){
-      throwInvaildCommand();
+      throwInvalidCommand();
   }
 
 }
 
-  private void throwInvaildCommand() {
+  private void throwInvalidCommand() {
     throw new IllegalArgumentException("Invalid command type \"help\" for valid commands");
   }
 

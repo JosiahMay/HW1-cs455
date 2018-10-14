@@ -21,7 +21,7 @@ public class RoutingTable {
     StringBuilder rt = new StringBuilder();
     int entryNum = 1;
     for (RoutingEntry e:entries) {
-      rt.append("\nEntry ").append(entryNum).append("\n").append(e).append("");
+      rt.append("\nHop ").append(entryNum++).append("\n").append(e).append("\n");
     }
     return rt.toString();
   }
