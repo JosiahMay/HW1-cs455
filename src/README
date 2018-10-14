@@ -1,0 +1,72 @@
+Josiah May
+CS455 HW1-PC
+
+Notes:
+For overlay of 4 this program works for all numbers but at three anything over 50000 deadlocks.
+I know this program is not tread safe.
+
+Usage:
+  compile:
+  make
+
+  clean:
+  make clean
+
+  Start Registry Node:
+  java cs455.overlay.node.Registry portnum
+
+  Start Messaging Nodes:
+  java cs455.overlay.node.MessagingNode registry-host registry-port
+
+
+Node:
+
+MessagingNode.java: Logic and controller for message nodes has main class that takes two arguments
+                    the registry host(name or ip) and the registry port. Extends Node
+Node.java: Base class for node and registry has all shared method calls
+RandomNodeID.java: Creates random ID numbers for message nodes
+Registry.java: Logic and controller for Registry has main class that takes one argument the
+               port to open a server socket on
+
+Routing:
+
+RoutingEntry.java: The info for a routing table, id, port number
+RoutingTable.java: Array of RoutingEntry, poorly implemented
+
+Transport:
+
+TCPConnection.java: Class the holds the a TCPReceiverThread and TCPSender to pass commands to them
+TCPConnectionsCache.java: Class that holds all the know TCPConnection to a Node, very poorly
+                          implemented. In fact, I am surprised it even works.
+TCPReceiverThread.java: Thread to listen to a socket and pass byte[] data to the Nodes
+TCPSender.java: A socket to other nodes to send byte[] data
+TCPServerThread.java: Listens on a Server socket for incoming connections and creates a
+                      thread to listen to them
+
+Util:
+
+CommandProtocols.java: Interface to hold the wireframe code numbers
+InputCommands.java: Interface of accepted user inputs
+InteractiveCommandParser.java: Listens to user inputs to control the Nodes
+PacketsSentInfo.java: The data on packets sent, received, transfer ...
+StatisticsCollectorAndDisplay.java: Print methods for commands
+
+Wireformats:
+
+Event.java: Base class for all commands, it contains all the logic for converting Objects into byte[]
+EventFactory.java: Examines an event and determines its type
+MessageReportStatus.java: base class for most simple wireframe messages
+NodeReportsOverlaySetupStatus.java: Message from a node to report their status in setting up their
+                                    overlay to the registry, extends MessageReportStatus
+OverlayNodeReportsTaskFinished.java: Message from a messageNode to the registry saying they finish send their messages, extends MessageReportStatus
+OverlayNodeReportsTrafficSummary.java: Message contain all a messageNode with all of its packet info
+OverlayNodeSendsData.java:
+OverlayNodeSendsDeregistration.java:
+OverlayNodeSendsRegistration.java
+Packet.java: All the info that two MessageNodes sent to each other
+Protocol.java: Interface that defines what wireframe is
+RegistryReportsDeregistrationStatus.java
+RegistryReportsRegistrationStatus.java
+RegistryRequestsTaskInitiate.java
+RegistryRequestsTrafficSummary.java
+RegistrySendsNodeManifest.java

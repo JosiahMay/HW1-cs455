@@ -1,30 +1,21 @@
 
 
-import cs455.overlay.node.MessagingNodeTest;
-import cs455.overlay.routing.RoutingEntry;
 import cs455.overlay.routing.RoutingEntryTest;
-import cs455.overlay.routing.RoutingTable;
 import cs455.overlay.routing.RoutingTableTest;
-import cs455.overlay.util.InputCommands;
 import cs455.overlay.util.InputCommandsTest;
-import cs455.overlay.wireformats.EventFactory;
 import cs455.overlay.wireformats.EventFactoryTest;
 import cs455.overlay.wireformats.EventTest;
 import cs455.overlay.wireformats.NodeReportsOverlaySetupStatusTest;
 import cs455.overlay.wireformats.OverlayNodeReportsTaskFinishedTest;
-import cs455.overlay.wireformats.OverlayNodeReportsTrafficSummaryTest;
 import cs455.overlay.wireformats.OverlayNodeSendsDataTest;
 import cs455.overlay.wireformats.OverlayNodeSendsDeregistrationTest;
 import cs455.overlay.wireformats.OverlayNodeSendsRegistrationTest;
-import cs455.overlay.wireformats.Packet;
 import cs455.overlay.wireformats.PacketTest;
 import cs455.overlay.wireformats.RegistryReportsDeregistrationStatusTest;
-import cs455.overlay.wireformats.RegistryReportsRegistrationStatus;
 import cs455.overlay.wireformats.RegistryReportsRegistrationStatusTest;
 import cs455.overlay.wireformats.RegistryRequestsTaskInitiateTest;
 import cs455.overlay.wireformats.RegistryRequestsTrafficSummaryTest;
 import cs455.overlay.wireformats.RegistrySendsNodeManifestTest;
-import cs455.overlay.wireformats.TrafficReportTest;
 import junit.framework.JUnit4TestAdapter;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -45,8 +36,6 @@ import org.junit.runners.Suite;
       RegistryRequestsTaskInitiateTest.class,
       PacketTest.class,
       OverlayNodeSendsDataTest.class,
-      TrafficReportTest.class,
-      OverlayNodeReportsTrafficSummaryTest.class,
       OverlayNodeReportsTaskFinishedTest.class,
       RegistryRequestsTrafficSummaryTest.class,
       InputCommandsTest.class

@@ -1,18 +1,20 @@
 package cs455.overlay.wireformats;
 
+import cs455.overlay.util.PacketsSentInfo;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class OverlayNodeReportsTrafficSummary extends Event implements Protocol{
 
   private final int idNum;
-  private final TrafficReport report;
+  private final PacketsSentInfo report;
 
   public OverlayNodeReportsTrafficSummary() {
-    this(-1, new TrafficReport());
+    this(-1, new PacketsSentInfo());
   }
 
-  public OverlayNodeReportsTrafficSummary(int idNum, TrafficReport report) {
+  public OverlayNodeReportsTrafficSummary(int idNum, PacketsSentInfo report) {
     super(OVERLAY_NODE_REPORTS_TRAFFIC_SUMMARY);
     this.idNum = idNum;
     this.report = report;
@@ -24,6 +26,7 @@ public class OverlayNodeReportsTrafficSummary extends Event implements Protocol{
     report = readTrafficReport();
 
     teardownDataInputStream();
+    //System.out.println(report);
   }
 
   @Override
@@ -38,14 +41,14 @@ public class OverlayNodeReportsTrafficSummary extends Event implements Protocol{
   }
 
   private void writeTrafficReport() throws IOException {
-    dout.writeInt(report.getPacketSent());
+    dout.writeInt(report.getPacketsSent());
     dout.writeInt(report.getPacketsRelayed());
-    dout.writeLong(report.getSumOfPacketSent());
-    dout.writeLong(report.getPacketsReceived());
-    dout.writeLong(report.getSumOfPacketsReceived());
+    dout.writeLong(report.getSumSent());
+    dout.writeInt(report.getPacketsReceived());
+    dout.writeLong(report.getSumReceived());
   }
 
-  private TrafficReport readTrafficReport() throws IOException {
+  private PacketsSentInfo readTrafficReport() throws IOException {
     int packetsSent = din.readInt();
     int packetsRelayed = din.readInt();
     long sumOfSent = din.readLong();
@@ -54,16 +57,14 @@ public class OverlayNodeReportsTrafficSummary extends Event implements Protocol{
 
     int[] packetData = {packetsSent, packetsRelayed, packetsReceived};
     long[] sumData = {sumOfSent, sumOfReceived};
-
-    return new TrafficReport(packetData, sumData);
+    //System.out.println("In Traffic " + Arrays.toString(sumData));
+    return new PacketsSentInfo(packetData, sumData);
   }
 
   public int getIdNum() {
     return idNum;
   }
 
-  public TrafficReport getReport() {
-    return report;
-  }
+  public PacketsSentInfo getReport() { return report; }
 
 }
