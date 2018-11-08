@@ -6,3 +6,6 @@
 # IntelliJ generated files #
 .idea/
 *.iml
+
+# class files
+.class
